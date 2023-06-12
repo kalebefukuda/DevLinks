@@ -1,0 +1,150 @@
+* {
+  margin: 0; /*zerando as medidas que vem por padrao do navegador*/
+  padding: 0;
+  box-sizing: border-box;
+}
+:root {
+  /*raiz*/
+  --text-color: white; /*variavel */
+  --bg-url: url(./assets/bg-mobile.jpg);
+  --stroke-color: rgba(255, 255, 255, 0.5);
+  --surface-color: rgba(255, 255, 255, 0.05);
+  --surface-color-hover: rgba(0, 0, 0, 0.02);
+  --highlight-color: rgba(255, 255, 255, 0.2);
+  --switch-bg-url: url(./assets/moon-stars.svg);
+}
+.light {
+  --text-color: black;
+  --bg-url: url(./assets/wallpaperflare.com_wallpaper.jpg); /*classe que altera o fundo para light*/
+  --stroke-color: rgba(0, 0, 0, 0.5);
+  --surface-color: rgba(0, 0, 0, 0.05);
+  --surface-color-hover: rgba(0, 0, 0, 0.02);
+  --highlight-color: rgba(0, 0, 0, 0.1);
+  --switch-bg-url: url(./assets/sun.svg);
+}
+
+body {
+  /*
+ background-image: url(./assets/bg-mobile.jpg);    (link da imagem)
+ background-repeat: no-repeat;     (nao repetir a imagem)
+ background-position: top center;   (colocar a imagem no topo e no centro)
+ background-size: cover;   (cobrir toda a pagina com a imagem)
+
+ !como agrupar tudo isso!
+ */
+  background: var(--bg-url) no-repeat top center/cover;
+}
+body * {
+  font-family: "Inter", sans-serif;
+  color: var(--text-color);
+}
+#container {
+  width: 360px;
+  margin: 56px auto 0px; /*56px no top, auto nas laterais, e 0px botton*/
+  padding: 0 24px;
+}
+#profile {
+  text-align: center; /*outra forma de centralizar elementos inline é usar o pai do elemento*/
+  padding: 24px;
+}
+/* #profile img {
+display: block;
+width: 112px;        em elementos inline nao aplica a regra do margin, é preciso usar o dysplay block seguido de margin.
+margin: auto;
+} */
+#profile p {
+  font-weight: 500;
+  line-height: 24px;
+  margin-top: 8px;
+}
+
+/*switch*/
+#switch {
+  position: relative; /*faz com que os elementos swtich fiquem relatividados dentro de um tamannho de box*/
+  width: 64px;
+  margin: 4px auto;
+}
+#switch button {
+  width: 32px;
+  height: 32px;
+  background: rgb(255, 255, 255) var(--switch-bg-url) no-repeat center; /*simplificando os backgrounds*/
+  border: 0;
+  border-radius: 50%;
+  top: 50%;
+  transform: translateY(
+    -50%
+  ); /*mover o objeto no eixo y, que nesse caso está relativizado com o switch*/
+  position: absolute; /*sobrepor*/
+  z-index: 1; /*camada de andar de sobreposição*/
+}
+.light #switch button {
+  right: 0;
+  left: initial;
+}
+#switch span {
+  display: block;
+  width: 64px;
+  height: 24px;
+  background: var(--surface-color);
+  border: 1px solid var(--stroke-color);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 9999px;
+}
+/*links-lista*/
+ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 16px; /*espaço entre os elementos*/
+  padding: 24px 0;
+}
+ul li a {
+  display: flex;
+  justify-content: center; /*alinha o conteudo no meio da linha imaginaria que passar pela vertical*/
+  align-items: center; /*alinha o item na linha imaginaria dentro da caixa, horizontalmente*/
+  padding: 16px 24px;
+
+  background: var(--surface-color);
+  border: 1px solid var(--stroke-color);
+  border-radius: 8px; /*arredondamento de borda*/
+
+  backdrop-filter: blur(4px); /*embassar*/
+  -webkit-backdrop-filter: blur(
+    4px
+  ); /*algumas versoes de browser necessitam desse prefixo*/
+  text-decoration: none; /*tira a linha debaixo do link*/
+  font-weight: bold; /*peso da fonte acima de 500*/
+
+  transition: background 0.2s; /*transicao de conteudos (li a)*/
+}
+/*aplicar efeito ao passar o mouse em cima (pseudo-selector)*/
+ul li a:hover {
+  background: var(--surface-color-hover);
+  border: 1.5px solid var(--text-color);
+  backdrop-filter: blur(4px);
+}
+#social-links {
+  display: flex;
+
+  padding: 24px 0;
+  justify-content: center;
+
+  font-size: 24px;
+}
+#social-links a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 16px;
+  transition: background 0.2s;
+  border-radius: 50%;
+}
+#social-links a:hover {
+  background: rgba(--highlight-color);
+}
+/* footer {
+  padding: 24px 0;
+  text-align: center;
+  font-size: 14px;
+} */
