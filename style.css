@@ -78,10 +78,13 @@ margin: auto;
   ); /*mover o objeto no eixo y, que nesse caso está relativizado com o switch*/
   position: absolute; /*sobrepor*/
   z-index: 1; /*camada de andar de sobreposição*/
+  animation: slide-back 0.4s;
 }
 .light #switch button {
-  right: 0;
-  left: initial;
+  animation: slide-in 0.4s forwards; /*forwards para manter as propriedades da animação*/
+}
+#switch button:hover {
+  outline: 8px solid var(--highlight-color);
 }
 #switch span {
   display: block;
@@ -151,11 +154,28 @@ ul li a:hover {
   font-size: 14px;
 } */
 /* media queries */
-@media (min-width: 700px){
-  :root{
+@media (min-width: 700px) {
+  :root {
     --bg-url: url(./assets/bg-mobile.jpg);
   }
-  .light{
+  .light {
     --bg-url: url(./assets/wallpaperflare.com_wallpaper.jpg);
+  }
+}
+/* animation */
+@keyframes slide-in {
+  from {
+    left: 0;
+  }
+  to {
+    left: 50%;
+  }
+}
+@keyframes slide-back {
+  from {
+    left: 50%;
+  }
+  to {
+    left: 0;
   }
 }
