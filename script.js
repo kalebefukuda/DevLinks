@@ -12,7 +12,7 @@ function toggleMode() {
 
   //substituir a img
   if(html.classList.contains("light")){
-    img.setAttribute("src", 'assets/Avatar-light.png')
+    img.setAttribute("src", "assets/Avatar-light.png")
   } else{
     img.setAttribute("src","assets/Avatar.png")
   }
